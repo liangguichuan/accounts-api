@@ -1,0 +1,4 @@
+logging:
+  level:
+    root: info
+  path: D:\Environment\Log\accounts-log
