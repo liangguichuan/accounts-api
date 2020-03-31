@@ -37,7 +37,7 @@ public class JwtUtil {
 
     public static boolean validationToken(String token, String apiKey){
         DecodedJWT jwt = JWT.decode(token);
-
+        return true;
     }
 
 }
