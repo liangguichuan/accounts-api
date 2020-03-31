@@ -1,7 +1,8 @@
 package com.chuan.accounts.interceptor;
 
-import com.chuan.accounts.bean.BusinessCode;
-import com.chuan.accounts.bean.BusinessResult;
+import com.chuan.accounts.bean.business.BusinessCode;
+import com.chuan.accounts.bean.business.BusinessException;
+import com.chuan.accounts.bean.business.BusinessResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 @Slf4j
-public class GlobalExceptionHandler {
+public class ExceptionInterceptor {
 
     @ExceptionHandler(Exception.class)
     public BusinessResult systemError(Exception e) {
@@ -21,6 +22,12 @@ public class GlobalExceptionHandler {
     public BusinessResult paramError(MethodArgumentNotValidException e) {
         log.error(e.getMessage(), e);
         return BusinessResult.failed(BusinessCode.INVALID_PARAM, e.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    public BusinessResult businessError(BusinessException e){
+        log.error(e.getMessage(), e);
+        return BusinessResult.failed(BusinessCode.BUSINESS_ERROR, e.getMessage());
     }
 
 }

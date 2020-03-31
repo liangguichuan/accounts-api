@@ -1,4 +1,4 @@
-package com.chuan.accounts.bean;
+package com.chuan.accounts.bean.business;
 
 public class BusinessResult<T> {
 

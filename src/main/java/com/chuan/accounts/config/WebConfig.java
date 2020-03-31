@@ -10,13 +10,13 @@ public class WebConfig implements WebMvcConfigurer {
 
     private TokenInterceptor tokenInterceptor;
 
-
     public WebConfig(TokenInterceptor tokenInterceptor) {
         this.tokenInterceptor = tokenInterceptor;
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(tokenInterceptor).excludePathPatterns("/login", "logout");
+        registry.addInterceptor(tokenInterceptor).excludePathPatterns("/auth/*");
     }
+
 }

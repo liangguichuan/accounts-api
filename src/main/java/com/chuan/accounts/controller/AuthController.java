@@ -1,6 +1,8 @@
 package com.chuan.accounts.controller;
 
+import com.chuan.accounts.bean.business.BusinessResult;
 import com.chuan.accounts.bean.vo.AuthVO;
+import com.chuan.accounts.bean.vo.LoginVO;
 import com.chuan.accounts.bean.vo.LogonVO;
 import com.chuan.accounts.service.AuthService;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +18,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public AuthVO login(){
-
+    public BusinessResult<AuthVO> login(@RequestBody LoginVO loginVO){
+        return BusinessResult.success(authService.login(loginVO));
     }
 
     @DeleteMapping("/logout")
@@ -27,6 +29,6 @@ public class AuthController {
 
     @PostMapping("/logon")
     public boolean logon(@RequestBody LogonVO logonVO){
-
+        return false;
     }
 }
