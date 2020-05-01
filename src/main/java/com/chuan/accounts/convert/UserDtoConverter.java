@@ -4,6 +4,9 @@ import com.chuan.accounts.bean.dto.UserInfoDTO;
 import com.chuan.accounts.dao.entity.UserInfo;
 import org.springframework.beans.BeanUtils;
 
+/**
+ * @author 丶武僧
+ */
 public class UserDtoConverter {
 
     public static UserInfoDTO convert(UserInfo userInfo){

@@ -1,52 +1,36 @@
 package com.chuan.accounts.bean.business;
 
-public class BusinessResult<T> {
+import lombok.Data;
 
-    private Long code;
+import java.io.Serializable;
+
+/**
+ * @author 丶武僧
+ * 返回数据统一包装，不需要code，将code以http code返回，有异常返回msg
+ */
+
+@Data
+public class BusinessResult<T> implements Serializable {
+
+    private static final long serialVersionUID = -5209390822512234334L;
 
     private String msg;
 
     private T data;
 
-    public BusinessResult(BusinessCode code, T data) {
-        this.setCode(code);
-        this.setData(data);
+    public BusinessResult(T data){
+        this.data = data;
     }
 
-    public BusinessResult(BusinessCode code, String msg){
-        this.setCode(code);
-        this.setMsg(msg);
-    }
-
-    public static <T> BusinessResult<T> success(T data){
-        return new BusinessResult<T>(BusinessCode.SUCCESS, data);
-    }
-
-    public static <T> BusinessResult<T> failed(BusinessCode code, String msg){
-        return new BusinessResult<>(code, msg);
-    }
-
-    public Long getCode() {
-        return code;
-    }
-
-    public void setCode(BusinessCode status) {
-        this.code = status.getCode();
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
+    public BusinessResult(String msg){
         this.msg = msg;
     }
 
-    public T getData() {
-        return data;
+    public static <T> BusinessResult<T> success(T data){
+        return new BusinessResult(data);
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public static <T> BusinessResult<T> failed(String msg){
+        return new BusinessResult(msg);
     }
 }

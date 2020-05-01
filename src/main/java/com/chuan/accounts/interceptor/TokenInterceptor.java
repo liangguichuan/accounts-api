@@ -1,11 +1,8 @@
 package com.chuan.accounts.interceptor;
 
-import com.chuan.accounts.bean.RedisKeyPrefix;
-import com.chuan.accounts.bean.vo.UserVO;
-import com.chuan.accounts.util.JwtUtil;
-import com.chuan.accounts.util.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -24,7 +21,7 @@ public class TokenInterceptor implements HandlerInterceptor {
         String token = request.getHeader(AUTH);
         if(StringUtils.isBlank(token)){
             log.error("TokenInterceptor.preHandle: token is null");
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
             return false;
         }
         return true;

@@ -9,15 +9,15 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+/**
+ * @author 丶武僧
+ * redis配置
+ */
+
 @Configuration
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
-    /**
-     * retemplate相关配置
-     * @param factory
-     * @return
-     */
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
 

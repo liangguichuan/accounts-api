@@ -5,6 +5,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author 丶武僧
+ * Redis工具类
+ */
+
 @Component
 public class RedisUtil {
 

@@ -32,11 +32,6 @@ public class TestController {
         return JSON.toJSONString(loginVO);
     }
 
-    @GetMapping("/error")
-    public void error(){
-        throw new BusinessException("test error");
-    }
-
     @GetMapping("/redis/{key}/{value}")
     public void redis(@PathVariable("key") String key, @PathVariable("value") String value){
         redisUtil.setString(RedisKeyPrefix.USERINFO, 1L, value, 15);
