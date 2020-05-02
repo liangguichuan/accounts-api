@@ -8,7 +8,7 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.chuan</groupId>
+	<groupId>com.gary</groupId>
 	<artifactId>accounts</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>accounts-api</name>
@@ -70,6 +70,18 @@
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
 		</dependency>
 
 		<dependency>

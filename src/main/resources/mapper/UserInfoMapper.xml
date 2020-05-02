@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chuan.accounts.dao.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.chuan.accounts.dao.entity.UserInfo">
+<mapper namespace="com.gary.accounts.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.gary.accounts.dao.entity.UserInfo">
     <constructor>
       <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -43,7 +43,7 @@
   <sql id="Base_Column_List">
     id, name, password, create_time, update_time, email
   </sql>
-  <select id="selectByExample" parameterType="com.chuan.accounts.dao.entity.UserInfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.gary.accounts.dao.entity.UserInfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -68,7 +68,7 @@
     delete from user_info
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <insert id="insert" parameterType="com.gary.accounts.dao.entity.UserInfo">
     insert into user_info (id, name, password, 
       create_time, update_time, email
       )
@@ -76,7 +76,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <insert id="insertSelective" parameterType="com.gary.accounts.dao.entity.UserInfo">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -119,7 +119,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.gary.accounts.dao.entity.UserInfo">
     update user_info
     <set>
       <if test="name != null">
@@ -140,7 +140,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <update id="updateByPrimaryKey" parameterType="com.gary.accounts.dao.entity.UserInfo">
     update user_info
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -149,7 +149,7 @@
       email = #{email,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <resultMap id="BaseResultMap" type="com.chuan.accounts.dao.entity.UserInfo">
+  <resultMap id="BaseResultMap" type="com.gary.accounts.dao.entity.UserInfo">
     <constructor>
       <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -191,7 +191,7 @@
   <sql id="Base_Column_List">
     id, name, password, create_time, update_time, email
   </sql>
-  <select id="selectByExample" parameterType="com.chuan.accounts.dao.entity.UserInfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.gary.accounts.dao.entity.UserInfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -216,7 +216,7 @@
     delete from user_info
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <insert id="insert" parameterType="com.gary.accounts.dao.entity.UserInfo">
     insert into user_info (id, name, password, 
       create_time, update_time, email
       )
@@ -224,7 +224,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <insert id="insertSelective" parameterType="com.gary.accounts.dao.entity.UserInfo">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -267,7 +267,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.gary.accounts.dao.entity.UserInfo">
     update user_info
     <set>
       <if test="name != null">
@@ -288,7 +288,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <update id="updateByPrimaryKey" parameterType="com.gary.accounts.dao.entity.UserInfo">
     update user_info
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -297,7 +297,7 @@
       email = #{email,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <resultMap id="BaseResultMap" type="com.chuan.accounts.dao.entity.UserInfo">
+  <resultMap id="BaseResultMap" type="com.gary.accounts.dao.entity.UserInfo">
     <constructor>
       <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -339,7 +339,7 @@
   <sql id="Base_Column_List">
     id, name, password, create_time, update_time, email
   </sql>
-  <select id="selectByExample" parameterType="com.chuan.accounts.dao.entity.UserInfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.gary.accounts.dao.entity.UserInfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -364,7 +364,7 @@
     delete from user_info
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <insert id="insert" parameterType="com.gary.accounts.dao.entity.UserInfo">
     insert into user_info (id, name, password, 
       create_time, update_time, email
       )
@@ -372,7 +372,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <insert id="insertSelective" parameterType="com.gary.accounts.dao.entity.UserInfo">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -415,7 +415,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.gary.accounts.dao.entity.UserInfo">
     update user_info
     <set>
       <if test="name != null">
@@ -436,7 +436,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chuan.accounts.dao.entity.UserInfo">
+  <update id="updateByPrimaryKey" parameterType="com.gary.accounts.dao.entity.UserInfo">
     update user_info
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

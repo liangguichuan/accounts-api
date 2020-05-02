@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chuan.accounts.dao.ApiAuthMapper">
-  <resultMap id="BaseResultMap" type="com.chuan.accounts.dao.entity.ApiAuth">
+<mapper namespace="com.gary.accounts.dao.ApiAuthMapper">
+  <resultMap id="BaseResultMap" type="com.gary.accounts.dao.entity.ApiAuth">
     <constructor>
       <idArg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="api_key" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -41,7 +41,7 @@
   <sql id="Base_Column_List">
     user_id, api_key, token, update_time
   </sql>
-  <select id="selectByExample" parameterType="com.chuan.accounts.dao.entity.ApiAuthExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.gary.accounts.dao.entity.ApiAuthExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -66,13 +66,13 @@
     delete from api_auth
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.chuan.accounts.dao.entity.ApiAuth">
+  <insert id="insert" parameterType="com.gary.accounts.dao.entity.ApiAuth">
     insert into api_auth (user_id, api_key, token, 
       update_time)
     values (#{userId,jdbcType=INTEGER}, #{apiKey,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.chuan.accounts.dao.entity.ApiAuth">
+  <insert id="insertSelective" parameterType="com.gary.accounts.dao.entity.ApiAuth">
     insert into api_auth
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -103,7 +103,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chuan.accounts.dao.entity.ApiAuth">
+  <update id="updateByPrimaryKeySelective" parameterType="com.gary.accounts.dao.entity.ApiAuth">
     update api_auth
     <set>
       <if test="apiKey != null">
@@ -118,7 +118,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chuan.accounts.dao.entity.ApiAuth">
+  <update id="updateByPrimaryKey" parameterType="com.gary.accounts.dao.entity.ApiAuth">
     update api_auth
     set api_key = #{apiKey,jdbcType=VARCHAR},
       token = #{token,jdbcType=VARCHAR},
