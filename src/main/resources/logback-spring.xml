@@ -172,29 +172,21 @@
         可以包含零个或多个元素，标识这个appender将会添加到这个logger。
     -->
 
-    <!--开发环境:打印控制台-->
+    <!--开发环境:打印控制台 -->
     <springProfile name="dev">
-        <logger name="com.gary.accounts" level="info">
+        <root level="DEBUG">
             <appender-ref ref="CONSOLE"/>
-        </logger>
+        </root>
     </springProfile>
 
-    <!--生产环境:输出到文件-->
+    <!-- 生产环境:输出到文件 -->
     <springProfile name="prod">
-        <logger name="com.gary.accounts" level="info">
+        <root level="INFO">
             <appender-ref ref="DEBUG_FILE"/>
             <appender-ref ref="INFO_FILE"/>
             <appender-ref ref="ERROR_FILE"/>
             <appender-ref ref="WARN_FILE"/>
-        </logger>
+        </root>
     </springProfile>
-
-    <root level="info">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="DEBUG_FILE"/>
-        <appender-ref ref="INFO_FILE"/>
-        <appender-ref ref="WARN_FILE"/>
-        <appender-ref ref="ERROR_FILE"/>
-    </root>
 
 </configuration>

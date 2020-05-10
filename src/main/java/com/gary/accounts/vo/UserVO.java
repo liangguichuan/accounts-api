@@ -1,11 +1,11 @@
-package com.gary.accounts.bean.vo;
+package com.gary.accounts.vo;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class UserInfoVO implements Serializable {
+public class UserVO implements Serializable {
 
     private Long id;
 

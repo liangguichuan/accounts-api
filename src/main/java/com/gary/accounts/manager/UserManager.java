@@ -1,10 +1,8 @@
 package com.gary.accounts.manager;
 
-import com.gary.accounts.bean.dto.UserInfoDTO;
-import com.gary.accounts.convert.UserDtoConverter;
-import com.gary.accounts.dao.UserInfoMapper;
-import com.gary.accounts.dao.entity.UserInfo;
-import com.gary.accounts.dao.entity.UserInfoExample;
+import com.gary.accounts.entity.User;
+import com.gary.accounts.entity.UserExample;
+import com.gary.accounts.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -14,16 +12,20 @@ import java.util.List;
 @Slf4j
 public class UserManager {
 
-    private UserInfoMapper userInfoMapper;
+    private final UserMapper userInfoMapper;
 
-    public UserManager(UserInfoMapper userInfoMapper) {
+    public UserManager(UserMapper userInfoMapper) {
         this.userInfoMapper = userInfoMapper;
     }
 
-    public UserInfoDTO findUserByNameAndPassword(String email, String password) {
-        UserInfoExample example = new UserInfoExample();
+    public User findUserByNameAndPassword(String email, String password) {
+        UserExample example = new UserExample();
         example.createCriteria().andEmailEqualTo(email).andPasswordEqualTo(password);
-        List<UserInfo> userList = userInfoMapper.selectByExample(example);
-        return UserDtoConverter.convert(userList.isEmpty() ? null : userList.get(0));
+        List<User> userList = userInfoMapper.selectByExample(example);
+        return userList.isEmpty() ? null : userList.get(0);
+    }
+
+    public Boolean insertUser(User user){
+        return userInfoMapper.insert(user) > 0;
     }
 }

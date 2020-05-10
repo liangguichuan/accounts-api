@@ -1,8 +1,9 @@
-package com.gary.accounts.bean;
+package com.gary.accounts.common;
 
 public enum RedisKeyPrefix {
     USERINFO("Accounts", "User_id", "Token"),
-    OVERVIEW("Overview", "View_id", "List");
+    OVERVIEW("Overview", "View_id", "List"),
+    TONGJI("Schedule", "name", "test");
 
     private final String project;
 
@@ -17,9 +18,6 @@ public enum RedisKeyPrefix {
     }
 
     public String generateKey(Long id) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(this.project).append(":").append(this.type).append(":")
-                .append(id).append(":").append(this.data);
-        return builder.toString();
+        return this.project + ":" + this.type + ":" + id + ":" + this.data;
     }
 }

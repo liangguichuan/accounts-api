@@ -1,32 +1,23 @@
-package com.gary.accounts.dao.entity;
+package com.gary.accounts.entity;
 
 import java.util.Date;
 
-public class UserInfo {
+public class User {
     private Long id;
 
     private String name;
+
+    private String nickName;
+
+    private String phone;
+
+    private String email;
 
     private String password;
 
     private Date createTime;
 
     private Date updateTime;
-
-    private String email;
-
-    public UserInfo(Long id, String name, String password, Date createTime, Date updateTime, String email) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.email = email;
-    }
-
-    public UserInfo() {
-        super();
-    }
 
     public Long getId() {
         return id;
@@ -42,6 +33,30 @@ public class UserInfo {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName == null ? null : nickName.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
     public String getPassword() {
@@ -66,13 +81,5 @@ public class UserInfo {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
     }
 }

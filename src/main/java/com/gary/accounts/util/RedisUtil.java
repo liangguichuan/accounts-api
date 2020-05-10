@@ -1,9 +1,10 @@
 package com.gary.accounts.util;
 
-import com.gary.accounts.bean.RedisKeyPrefix;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 丶武僧
@@ -13,25 +14,30 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisUtil {
 
-    private StringRedisTemplate stringRedisTemplate;
+    private final StringRedisTemplate stringRedisTemplate;
 
     public RedisUtil(StringRedisTemplate stringRedisTemplate) {
         this.stringRedisTemplate = stringRedisTemplate;
     }
 
-    public void setString(RedisKeyPrefix keyPrefix, Long id, String value, long expireTime){
-        stringRedisTemplate.opsForValue().set(keyPrefix.generateKey(id), value, expireTime);
+    public void setString(String key, String value){
+        stringRedisTemplate.opsForValue().set(key, value);
     }
 
-    public <T> T getString(RedisKeyPrefix keyPrefix, Long id, Class<T> clazz){
-         String value = stringRedisTemplate.opsForValue().get(keyPrefix.generateKey(id));
-         if(StringUtils.isBlank(value)){
-             return null;
-         }
-         return JsonUtil.stringToObj(value, clazz);
+    public void setStringWithExpireTime(String key, String value, long expireTime){
+        stringRedisTemplate.opsForValue().set(key, value, expireTime);
     }
 
-    public Boolean delStringKey(RedisKeyPrefix keyPrefix, Long id){
-        return stringRedisTemplate.delete(keyPrefix.generateKey(id));
+    public Boolean setNXWithExperiTime(String key, String value, long expireTime){
+        Optional<Boolean> optional = Optional.ofNullable(stringRedisTemplate.opsForValue().setIfAbsent(key, value, expireTime, TimeUnit.MINUTES));
+        return optional.orElse(false);
+    }
+
+    public String getString(String value){
+         return stringRedisTemplate.opsForValue().get(value);
+    }
+
+    public Boolean delStringKey(String key){
+        return stringRedisTemplate.delete(key);
     }
 }

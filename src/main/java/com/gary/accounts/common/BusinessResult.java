@@ -1,4 +1,4 @@
-package com.gary.accounts.bean.business;
+package com.gary.accounts.common;
 
 import lombok.Data;
 

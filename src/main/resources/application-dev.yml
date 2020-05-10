@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/accounts
-    driver-class-name: org.postgresql.Driver
-    username: postgres
+    url: jdbc:mysql://localhost:3306/accounts
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
     password: WUseng2020
   redis:
     database: 0
