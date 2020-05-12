@@ -17,7 +17,6 @@ public class TokenInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        //TODO 此处的异常返回是否能统一进行封装
         String token = request.getHeader(AUTH);
         if(StringUtils.isBlank(token)){
             log.error("TokenInterceptor.preHandle: token is null");

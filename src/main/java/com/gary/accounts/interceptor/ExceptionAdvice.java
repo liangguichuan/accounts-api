@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestControllerAdvice
 @Slf4j
-public class ExceptionInterceptor {
+public class ExceptionAdvice {
 
     private static final int BUSINESS_CODE = 600;
 
