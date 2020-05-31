@@ -1,7 +1,8 @@
 package com.gary.accounts.interceptor;
 
-import com.gary.accounts.common.BusinessException;
-import com.gary.accounts.common.BusinessResult;
+import com.gary.accounts.common.AccountsCode;
+import com.gary.accounts.common.AccountsException;
+import com.gary.accounts.common.AccountsResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -21,34 +22,29 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class ExceptionAdvice {
 
-    private static final int BUSINESS_CODE = 600;
-
     @ExceptionHandler(Exception.class)
-    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
-    public BusinessResult<String> systemError(Exception e) {
+    public AccountsResult<Void> systemError(Exception e) {
         log.error(e.getMessage(), e);
-        return BusinessResult.failed(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
+        return AccountsResult.fail(AccountsCode.SYSTEM_ERROR);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-    public BusinessResult<String> paramError(MethodArgumentNotValidException e) {
+    public AccountsResult<Void> paramError(MethodArgumentNotValidException e) {
         log.error(e.getMessage(), e);
-        return BusinessResult.failed(e.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
+        return AccountsResult.fail(AccountsCode.PARAM_ERROR.getCode(),
+                e.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
     }
 
-    @ExceptionHandler(BusinessException.class)
-    public BusinessResult<String> businessError(BusinessException e, HttpServletResponse response){
+    @ExceptionHandler(AccountsException.class)
+    public AccountsResult<Void> businessError(AccountsException e){
         log.error(e.getMessage(), e);
-        response.setStatus(BUSINESS_CODE);
-        return BusinessResult.failed(e.getMessage());
+        return AccountsResult.fail(e.getAccountsCode());
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    @ResponseStatus(code = HttpStatus.METHOD_NOT_ALLOWED)
-    public BusinessResult<String> methodSupportError(HttpRequestMethodNotSupportedException e){
+    public AccountsResult<Void> methodSupportError(HttpRequestMethodNotSupportedException e){
         log.error(e.getMethod(), e);
-        return BusinessResult.failed(HttpStatus.METHOD_NOT_ALLOWED.getReasonPhrase());
+        return AccountsResult.fail(HttpStatus.METHOD_NOT_ALLOWED.value(), e.getMessage());
     }
 
 }
