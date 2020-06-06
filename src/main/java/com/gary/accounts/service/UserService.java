@@ -1,12 +1,14 @@
 package com.gary.accounts.service;
 
-import com.gary.accounts.vo.LogonVO;
-import com.gary.accounts.vo.UserVO;
+import com.gary.accounts.vo.RegisterRequestVO;
+import com.gary.accounts.vo.LoginResponseVO;
 
 public interface UserService {
 
-   UserVO login(String email, String password);
+   LoginResponseVO login(String email, String password);
 
-   Boolean logon(LogonVO logonVO);
+   Boolean register(RegisterRequestVO registerRequestVO);
+
+   Boolean modifyPwd(String code, String oldPassword, String newPassword);
 
 }

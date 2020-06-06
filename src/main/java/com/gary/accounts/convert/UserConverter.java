@@ -1,8 +1,8 @@
 package com.gary.accounts.convert;
 
 import com.gary.accounts.entity.User;
-import com.gary.accounts.vo.LogonVO;
-import com.gary.accounts.vo.UserVO;
+import com.gary.accounts.vo.RegisterRequestVO;
+import com.gary.accounts.vo.LoginResponseVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.DigestUtils;
 
@@ -15,21 +15,21 @@ public class UserConverter {
 
     private UserConverter(){}
 
-    public static UserVO convert(User user){
+    public static LoginResponseVO convert(User user){
         if(Objects.isNull(user)){
             return null;
         }
-        UserVO vo = new UserVO();
+        LoginResponseVO vo = new LoginResponseVO();
         BeanUtils.copyProperties(user, vo);
         return vo;
     }
 
-    public static User convert(LogonVO logonVO){
-        if(Objects.isNull(logonVO)){
+    public static User convert(RegisterRequestVO registerRequestVO){
+        if(Objects.isNull(registerRequestVO)){
             return null;
         }
         User user = new User();
-        BeanUtils.copyProperties(logonVO, user);
+        BeanUtils.copyProperties(registerRequestVO, user);
         String salt = user.getEmail() + user.getPassword();
         user.setPassword(DigestUtils.md5DigestAsHex(salt.getBytes()));
         return user;

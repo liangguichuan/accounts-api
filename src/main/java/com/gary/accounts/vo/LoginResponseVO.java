@@ -5,9 +5,12 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class UserVO implements Serializable {
+public class LoginResponseVO implements Serializable {
 
     private Long id;
 
     private String name;
+
+    private String nickName;
+
 }

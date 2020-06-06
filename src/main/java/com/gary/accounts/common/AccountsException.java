@@ -14,10 +14,14 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class AccountsException extends RuntimeException {
 
-    private final AccountsCode accountsCode;
+    private final Integer code;
 
-    public AccountsException(AccountsCode accountsCode) {
-        super(accountsCode.getMsg());
-        this.accountsCode = accountsCode;
+    private final String msg;
+
+    public AccountsException(AccountsExceptionAssert accountsExceptionAssert) {
+        super(accountsExceptionAssert.getMsg());
+        this.code = accountsExceptionAssert.getCode();
+        this.msg = accountsExceptionAssert.getMsg();
+
     }
 }

@@ -23,11 +23,11 @@ public class AccountsResult<T> implements Serializable {
     private T data;
 
     public static <T> AccountsResult<T> success(T data){
-        return new AccountsResult<>(AccountsCode.SUCCESS.getCode(), AccountsCode.SUCCESS.getMsg(), data);
+        return new AccountsResult<>(AccountsCodeEnum.SUCCESS.getCode(), AccountsCodeEnum.SUCCESS.getMsg(), data);
     }
 
-    public static AccountsResult<Void> fail(AccountsCode accountsCode){
-        return fail(accountsCode.getCode(), accountsCode.getMsg());
+    public static AccountsResult<Void> fail(AccountsCodeEnum accountsCodeEnum){
+        return fail(accountsCodeEnum.getCode(), accountsCodeEnum.getMsg());
     }
 
     public static AccountsResult<Void> fail(Integer code, String msg){

@@ -1,6 +1,6 @@
 package com.gary.accounts.common;
 
-public enum RedisKeyPrefix {
+public enum RedisKeyPrefixEnum {
     USERINFO("Accounts", "User_id", "Token"),
     OVERVIEW("Overview", "View_id", "List"),
     TONGJI("Schedule", "name", "test");
@@ -11,7 +11,7 @@ public enum RedisKeyPrefix {
 
     private final String data;
 
-    RedisKeyPrefix(String project, String type, String data) {
+    RedisKeyPrefixEnum(String project, String type, String data) {
         this.project = project;
         this.type = type;
         this.data = data;

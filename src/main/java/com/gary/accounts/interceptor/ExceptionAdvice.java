@@ -1,6 +1,6 @@
 package com.gary.accounts.interceptor;
 
-import com.gary.accounts.common.AccountsCode;
+import com.gary.accounts.common.AccountsCodeEnum;
 import com.gary.accounts.common.AccountsException;
 import com.gary.accounts.common.AccountsResult;
 import lombok.extern.slf4j.Slf4j;
@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author 丶武僧
@@ -25,20 +22,20 @@ public class ExceptionAdvice {
     @ExceptionHandler(Exception.class)
     public AccountsResult<Void> systemError(Exception e) {
         log.error(e.getMessage(), e);
-        return AccountsResult.fail(AccountsCode.SYSTEM_ERROR);
+        return AccountsResult.fail(AccountsCodeEnum.SYSTEM_ERROR);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public AccountsResult<Void> paramError(MethodArgumentNotValidException e) {
         log.error(e.getMessage(), e);
-        return AccountsResult.fail(AccountsCode.PARAM_ERROR.getCode(),
+        return AccountsResult.fail(AccountsCodeEnum.PARAM_ERROR.getCode(),
                 e.getBindingResult().getFieldErrors().get(0).getDefaultMessage());
     }
 
     @ExceptionHandler(AccountsException.class)
     public AccountsResult<Void> businessError(AccountsException e){
         log.error(e.getMessage(), e);
-        return AccountsResult.fail(e.getAccountsCode());
+        return AccountsResult.fail(e.getCode(), e.getMsg());
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)

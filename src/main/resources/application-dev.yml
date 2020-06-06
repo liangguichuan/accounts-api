@@ -1,7 +1,10 @@
 server:
   port: 18080
+  shutdown: graceful
 
 spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
   datasource:
     url: jdbc:mysql://localhost:3306/accounts
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -28,3 +31,7 @@ spring:
 
 logging:
   config: classpath:logback-spring.xml
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

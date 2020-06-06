@@ -6,7 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class LoginVO {
+public class LoginRequestVO {
 
     @Email(message = "邮箱格式不正确!")
     private String email;
