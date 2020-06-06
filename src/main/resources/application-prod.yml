@@ -1,11 +1,14 @@
 server:
-  port: 18866
+  port: 18081
+  shutdown: graceful
 
 spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
   datasource:
-    url: jdbc:postgresql://localhost:5432/accounts
-    driver-class-name: org.postgresql.Driver
-    username: postgres
+    url: jdbc:mysql://localhost:3306/accounts
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
     password: WUseng2020
   redis:
     database: 0
@@ -18,9 +21,13 @@ spring:
         max-wait: 100
         max-idle: 10
         min-idle: 0
+  task:
+    execution:
+      pool:
+        core-size: 20
+        max-size: 40
+        keep-alive: 40s
+        queue-capacity: 100
 
-logging:
-  level:
-    root: error
-  file:
-    path: ${pom.basedir}\Log\accounts-log
+
+

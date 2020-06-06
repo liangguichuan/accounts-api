@@ -29,9 +29,5 @@ spring:
         keep-alive: 40s
         queue-capacity: 100
 
-logging:
-  config: classpath:logback-spring.xml
 
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
